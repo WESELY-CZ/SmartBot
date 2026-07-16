@@ -57,6 +57,19 @@ app.command("/smartbot-catpicture", async ({ ack, respond }) => {
   }
 });
 
+app.command("/smartbot-duckpicture", async ({ ack, respond }) => {
+  await ack();
+
+  try {
+    // Voláme API endpoint pro náhodnou kachnu
+    const response = await axios.get("https://random-d.uk/api/v2/random");
+    const duckImageUrl = response.data.url;
+    
+    await respond({ text: `Duck Picture:\n${duckImageUrl}` });
+  } catch (err) {
+    await respond({ text: "Failed to fetch a duck picture." });
+  }
+});
 
 app.command("/smartbot-catfact", async ({ ack, respond }) => {
   await ack();
