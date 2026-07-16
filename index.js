@@ -35,7 +35,6 @@ app.command("/smartbot-dogfact", async ({ ack, respond }) => {
 
   try {
     const response = await axios.get("https://dogapi.dog/api/v2/facts?limit=1");
-    // Toto konkrétní API vrací data ve struktuře: response.data.data[0].attributes.body
     const dogFact = response.data.data[0].attributes.body;
     await respond({ text: `Dog Fact:\n${dogFact}` });
   } catch (err) {
@@ -48,19 +47,16 @@ app.command("/smartbot-catpicture", async ({ ack, respond }) => {
   await ack();
 
   try {
-    const response = await axios.get("https://api.thecatapi.com/v1/images/search?format=src");
-    await respond({ text: `Cat Picture:\n${response.data[0].url}` });
+    // Voláme API bez "?format=src", aby nám vrátilo JSON
+    const response = await axios.get("https://api.thecatapi.com/v1/images/search");
+    const catImageUrl = response.data[0].url;
+    
+    await respond({ text: `Cat Picture:\n${catImageUrl}` });
   } catch (err) {
     await respond({ text: "Failed to fetch a cat picture." });
   }
 });
 
-    const dogFact = response.data.data[0].attributes.body;
-    await respond({ text: `Dog Fact:\n${dogFact}` });
-  } catch (err) {
-    await respond({ text: "Failed to fetch a dog fact." });
-  }
-});
 
 app.command("/smartbot-catfact", async ({ ack, respond }) => {
   await ack();
