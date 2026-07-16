@@ -24,10 +24,24 @@ app.command("/smartbot-help", async ({ ack, respond }) => {
     text:
 `Available Commands:
 /smartbot-ping - Check bot latency
-/smartbot-catfact - Get a cat fact`
+/smartbot-help - Show available commands
+/smartbot-catfact - Get a cat fact
+/smartbot-dogfact - Get a dog fact`
   });
 });
 
+app.command("/smartbot-dogfact", async ({ ack, respond }) => {
+  await ack();
+
+  try {
+    const response = await axios.get("https://dogapi.dog/api/v2/facts?limit=1");
+    // Toto konkrétní API vrací data ve struktuře: response.data.data[0].attributes.body
+    const dogFact = response.data.data[0].attributes.body;
+    await respond({ text: `Dog Fact:\n${dogFact}` });
+  } catch (err) {
+    await respond({ text: "Failed to fetch a dog fact." });
+  }
+});
 
 app.command("/smartbot-catfact", async ({ ack, respond }) => {
   await ack();
