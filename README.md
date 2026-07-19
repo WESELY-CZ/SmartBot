@@ -10,8 +10,6 @@ The bot is already running live on the server. To use it in Slack, just type any
 
 /smartbot-ping - Measures the bot's response latency in milliseconds.
 
-/smartbot-help - Lists all available commands.
-
 /smartbot-catfact & /smartbot-dogfact - Fetches a random animal fact from external APIs.
 
 /smartbot-catpicture & /smartbot-duckpicture - Grabs a random image or GIF of a cat or duck.
