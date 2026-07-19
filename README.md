@@ -1,12 +1,12 @@
-#SmartBot
+# SmartBot
 
 A Slack bot that lets you request random animal facts, pictures, and jokes directly inside your workspace using Slash commands.
 
-##Quick Start
+## Quick Start
 
 The bot is already running live on the server. To use it in Slack, just type any of the commands below in your chat bar.
 
-##Features
+## Features
 
 /smartbot-ping - Measures the bot's response latency in milliseconds.
 
@@ -18,15 +18,15 @@ The bot is already running live on the server. To use it in Slack, just type any
 
 /smartbot-joke - Delivers a random setup and punchline joke.
 
-##How to run it locally
+## How to run it locally
 
-###Prerequisites
+### Prerequisites
 
 Node.js (Version 18 or higher)
 
 A Slack App configured with Socket Mode enabled
 
-###Setup
+### Setup
 
 Clone the repository and install dependencies:
 ```bash
@@ -44,13 +44,13 @@ Start the local development server:
 node index.js
 ```
 
-##How it works
+## How it works
 
 The bot is built using Node.js and the official @slack/bolt framework running in Socket Mode. Instead of exposing a public HTTP endpoint and dealing with webhooks, the bot establishes a secure, persistent WebSocket connection to Slack's servers.
 
 All commands are asynchronous. When a user requests an image or a fact, the bot acknowledges the request immediately to prevent Slack's strict 3-second timeout, fetches the data from the respective third-party API using axios, and then delivers the payload back to the channel. The production version runs as a managed systemd service on a Linux VPS to ensure uptime and automatic restarts.
 
-##Credits
+## Credits
 
 Slack Bolt Framework for the core setup.
 
