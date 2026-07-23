@@ -23,10 +23,11 @@ app.command("/smartbot-help", async ({ ack, respond }) => {
   await respond({
     text:
 `Available Commands:
-/smartbot-ping - Check bot latency
-/smartbot-help - Show available commands
-/smartbot-catfact - Get a cat fact
-/smartbot-dogfact - Get a dog fact`
+/smartbot-ping - Measures the bot's response latency in milliseconds.
+/smartbot-catfact & /smartbot-dogfact - Fetches a random animal fact from external APIs.
+/smartbot-catpicture & /smartbot-duckpicture - Grabs a random image or GIF of a cat or duck.
+/smartbot-joke - Delivers a random setup and punchline joke.
+/smartbot-help - Shows all the commands of SmartBot.`
   });
 });
 
